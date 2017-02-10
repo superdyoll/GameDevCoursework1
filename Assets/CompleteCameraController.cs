@@ -1,32 +1,86 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class CompleteCameraController : MonoBehaviour {
+[AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
+public class CompleteCameraController : MonoBehaviour
+{
 
     public GameObject player;
 
+    public float distance = 5.0f;
+    public float xSpeed = 120.0f;
+    public float ySpeed = 120.0f;
+
+    public float yMinLimit = -20f;
+    public float yMaxLimit = 80f;
+
+    public float distanceMin = .5f;
+    public float distanceMax = 15f;
+    public float distanceStandard = 5.0f;
+
+   // private Rigidbody rigidbody;
     private Vector3 offset;
 
-    public float rotationDamping = 3.0f;
+    float x = 0.0f;
+    float y = 0.0f;
 
-	// Use this for initialization
-	void Start () {
-        //Calculate and store the offset value by getting the distance between the player's position and camera's position.
+    // Use this for initialization
+    void Start()
+    {
+        Vector3 angles = transform.eulerAngles;
+        x = angles.y;
+        y = angles.x;
+
+        //rigidbody = GetComponent<Rigidbody>();
+
+        // Make the rigid body not change rotation
+        //if (rigidbody != null)
+        //{
+        //    rigidbody.freezeRotation = true;
+        //}
+
         offset = transform.position - player.transform.position;
     }
 
-    // LateUpdate is called after Update each frame
-    void LateUpdate () {
-        // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
-        float wantedRotationAngle = player.transform.eulerAngles.y;
-        //float currentRotationAngle = this.transform.eulerAngles.y;
-        // Damp the rotation around the y-axis
-       //currentRotationAngle = Mathf.LerpAngle(currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
-       // Quaternion currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
+    void LateUpdate()
+    {
+        if (player)
+        {
+           
 
-        transform.position = player.transform.position + offset;
-        //transform.rotation = currentRotation;
+            Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
+
+            velocity.Normalize();
+            
+            x += velocity.x * xSpeed * distance * 0.02f;
+            y -= velocity.y * ySpeed * 0.02f;
+
+            //y = ClampAngle(y, yMinLimit, yMaxLimit);
+
+            Quaternion rotation = Quaternion.Euler(0,y,0);
+
+            distance = distanceStandard;
+
+            RaycastHit hit;
+            if (Physics.Linecast(player.transform.position, transform.position, out hit))
+            {
+                distance -= hit.distance;
+            }
+            Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
+            Vector3 position = rotation * negDistance + player.transform.position;
+
+            transform.rotation = rotation;
+            transform.position = position;
+        }
+    }
+
+    public static float ClampAngle(float angle, float min, float max)
+    {
+        if (angle < -360F)
+            angle += 360F;
+        if (angle > 360F)
+            angle -= 360F;
+        return Mathf.Clamp(angle, min, max);
     }
 }
 
