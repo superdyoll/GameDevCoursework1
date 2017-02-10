@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public Rigidbody rb;
+    public float minimumSpeed = 0.06f;
 
 	// Use this for initialization
 	void Start () {
@@ -17,15 +18,27 @@ public class PlayerMovement : MonoBehaviour {
 
         Vector3 velocity = rb.velocity;
 
+        velocity.Normalize();
+
+        print(speed);
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             //move right
-            rb.AddForce(0, 0, speed);
+            rb.AddForce(velocity.z * (speed), 0, velocity.x*(-speed));
         } 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             //move left
-            rb.AddForce(0, 0, -speed);
+            rb.AddForce(velocity.z * (-speed), 0, velocity.x*(speed));
+        }
+        if (Input.GetKey(KeyCode.UpArrow) && speed == 0)
+        {
+
+        }
+        if (speed < minimumSpeed)
+        {
+            rb.velocity = Vector3.zero;
         }
     
     }
