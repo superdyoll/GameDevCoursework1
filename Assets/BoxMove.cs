@@ -20,7 +20,7 @@ public class BoxMove : MonoBehaviour {
         int layerMask = (1 << 8);
         RaycastHit hitInfo;
         //check if can move in total or partial
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical") * -1));
+        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")));
         ray = new Ray(transform.position, Vector3.down);
         if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask))
         {
@@ -37,7 +37,7 @@ public class BoxMove : MonoBehaviour {
                 oldPostion = transform.position;
             }
             //check and move Vertically
-            transform.Translate(new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical") * -1));
+            transform.Translate(new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical")));
 
             ray = new Ray(transform.position, Vector3.down);
             if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask))
