@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float speed = rb.velocity.magnitude / 5;
+
+        Vector3 velocity = rb.velocity;
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             //move right
