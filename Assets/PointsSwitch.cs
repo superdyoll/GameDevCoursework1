@@ -10,7 +10,7 @@ public class PointsSwitch : MonoBehaviour {
     void Start () {
 		
 	}
-
+    
     void OnMouseDown()
     {
         foreach (GameObject track in tracks)
