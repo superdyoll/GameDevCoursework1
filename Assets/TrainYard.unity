@@ -333,7 +333,11 @@ Prefab:
     - target: {fileID: 135397573434660220, guid: 7e755675064dc2c438cee3e2912e826c,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351778801345604, guid: 7e755675064dc2c438cee3e2912e826c, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e755675064dc2c438cee3e2912e826c, type: 2}
