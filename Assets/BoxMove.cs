@@ -5,12 +5,20 @@ using UnityEngine;
 public class BoxMove : MonoBehaviour {
 
     public GameObject cube;
-    public Rigidbody rb = cube.GetComponent<Rigidbody>();
+    private Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
-		
+		rb = cube.GetComponent<Rigidbody>();
 	}
+
+    private void FixedUpdate()
+    {
+        Vector3 velocity = rb.velocity;
+        velocity.Normalize();
+        velocity = new Vector3(velocity.x, 0, velocity.z);
+        cube.transform.rotation = Quaternion.LookRotation(velocity, Vector3.up); //Make the object always face the direction it is moving in
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,7 +27,7 @@ public class BoxMove : MonoBehaviour {
         //horiz is a/d
 
         Vector3 oldPostion = transform.position;
-        Vector3 velocity = rb.velocity;
+        
         Ray ray;
         int layerMask = (1 << 8);
         RaycastHit hitInfo;
