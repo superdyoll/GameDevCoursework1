@@ -28,12 +28,14 @@ public class BoxMove : MonoBehaviour {
 
         Vector3 oldPostion = transform.position;
         
+  
+
         Ray ray;
         int layerMask = (1 << 8);
         RaycastHit hitInfo;
         //check if can move in total or partial
         transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")));
-        ray = new Ray(transform.position, Vector3.down);
+        ray = new Ray(transform.position + , Vector3.down);
         if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask))
         {
             transform.position = oldPostion;
