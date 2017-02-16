@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbe4ad807558154890e5c254fcbb9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cube: {fileID: 162851448}
+  smooth: 1
 --- !u!23 &162851450
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -262,7 +264,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 162851448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.6, y: 5.2, z: 0}
+  m_LocalPosition: {x: 21.3, y: 5.1, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -747,6 +749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbe4ad807558154890e5c254fcbb9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cube: {fileID: 0}
+  smooth: 1
 --- !u!23 &1747641887
 MeshRenderer:
   m_ObjectHideFlags: 0

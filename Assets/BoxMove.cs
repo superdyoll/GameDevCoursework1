@@ -17,56 +17,80 @@ public class BoxMove : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        Vector3 velocity = rb.velocity;
-        velocity.Normalize();
-        velocity = new Vector3(velocity.x, 0, velocity.z);
-        rb.transform.rotation = Quaternion.LookRotation(velocity, Vector3.up); //Make the object always face the direction it is moving in
+        edsMovement();
+    }
 
+    private void edsMovement()
+    {
         //vert is w/s
         //horiz is a/d
 
         Vector3 oldPostion = transform.position;
-
-        Transform potentialTransform = transform;
-        
+        Vector3 velocity = rb.velocity;
         Ray ray;
         int layerMask = (1 << 8);
         RaycastHit hitInfo;
         //check if can move in total or partial
-        potentialTransform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")));
-        ray = new Ray(potentialTransform.position, Vector3.down);
-
+        transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")));
+        ray = new Ray(transform.position, Vector3.down);
         if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask))
         {
-            potentialTransform.position = oldPostion;
+            transform.position = oldPostion;
             //check and move Horizontally
-            potentialTransform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f));
-            ray = new Ray(potentialTransform.position, Vector3.down);
-
-            if (Physics.Raycast(ray, out hitInfo, 100f, layerMask))
+            transform.Translate(new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f));
+            ray = new Ray(transform.position, Vector3.down);
+            if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask))
             {
-                oldPostion = potentialTransform.position;
+                transform.position = oldPostion;
             }
             else
             {
-                potentialTransform.position = oldPostion;
+                oldPostion = transform.position;
             }
-
             //check and move Vertically
-            potentialTransform.Translate(new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical")));
+            transform.Translate(new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical")));
 
-            ray = new Ray(potentialTransform.position, Vector3.down);
-
-            if (Physics.Raycast(ray, out hitInfo, 100f, layerMask))
+            ray = new Ray(transform.position, Vector3.down);
+            if (!Physics.Raycast(ray, out hitInfo, 100f, layerMask))
             {
-                oldPostion = potentialTransform.position;
+                transform.position = oldPostion;
             }
             else
             {
-                potentialTransform.position = oldPostion;
+                oldPostion = transform.position;
             }
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, potentialTransform.position, Time.deltaTime * smooth);
+        ray = new Ray(transform.position, Vector3.down);
+
+        if (Physics.Raycast(ray, out hitInfo, 100f, layerMask))
+        {
+            //Quaternion newRotation = Quaternion.LookRotation(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")), hitInfo.transform.forward);
+            //newRotation *= Quaternion.Euler(0, 90, 0);
+            Quaternion temp = Quaternion.LookRotation(hitInfo.transform.right, hitInfo.transform.up);
+            transform.rotation = temp;
+        }
     }
+
+    //take vector input for direction, current velocity and returns a new velocity as a vecotr3
+    Vector3 newtonianMotion(Vector3 direction, Vector3 currentVelocity)
+    {
+        float maxVelocity = 10;
+        float acceleration = 0.5f;
+
+        Vector3 newVelocity = currentVelocity + (acceleration * direction) * Time.deltaTime;
+
+        if (newVelocity.x > maxVelocity)
+        {
+            newVelocity.x = maxVelocity;
+        }
+        if (newVelocity.z > maxVelocity)
+        {
+            newVelocity.z = maxVelocity;
+        }
+
+        return newVelocity;
+    }
+
+
 }
