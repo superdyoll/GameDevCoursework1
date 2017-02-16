@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BoxMove : MonoBehaviour {
 
+    public GameObject cube;
+    public Rigidbody rb = cube.GetComponent<Rigidbody>();
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +19,7 @@ public class BoxMove : MonoBehaviour {
         //horiz is a/d
 
         Vector3 oldPostion = transform.position;
+        Vector3 velocity = rb.velocity;
         Ray ray;
         int layerMask = (1 << 8);
         RaycastHit hitInfo;
