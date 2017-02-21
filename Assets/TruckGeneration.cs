@@ -21,23 +21,29 @@ public class TruckGeneration : MonoBehaviour {
     private float timeNext = 0f;
     private Vector3 direction;
 
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
+        //update time
         timeSince += Time.deltaTime;
-		//check time - random time
-        //time for the next train
-        if (timeNext > timeSince)
+		//check time
+        if (timeNext < timeSince)
         {
-            //create a new train
-
+            //    Debug.Log("Time passed");
             //check space - fixed space
             direction = startSpawnLoc - endSpawnLoc;
             for (int i = 0; i <= direction.magnitude; i++)
             {
-                Physics.OverlapBox(startSpawnLoc + i * direction, );
+                if (Physics.OverlapBox(startSpawnLoc + i * direction, new Vector3(5f,0f, 5f)).Length == 0)
+                {
+                    //create a new object with random colour
+                    GameObject newTruck = Instantiate(prefab, startSpawnLoc + i * direction, Quaternion.identity);
+                    Renderer rend = newTruck.GetComponent<Renderer>();
+                    rend.material = materials[Random.Range(0, materials.Length - 1)];
+                    //set new timeNext for the next spawn
+                    timeNext = timeNext + Random.Range(intervalMin, intervalMax);
+                    break;
+                }
             }
-            //create object - random colour
-            //set new timeNext for the next spawn
-            timeNext = timeNext + Random.Range(intervalMin, intervalMax);
         }
     }
 }
