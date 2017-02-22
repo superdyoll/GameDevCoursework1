@@ -17,20 +17,20 @@ public class TruckGeneration : MonoBehaviour {
     public Vector3 startSpawnLoc;
     public Vector3 endSpawnLoc;
 
-    private float timeSince = 0f; 
+    private float timeNow = 0f; 
     private float timeNext = 0f;
     private Vector3 direction;
 
 	void FixedUpdate ()
     {
         //update time
-        timeSince += Time.deltaTime;
+        timeNow += Time.deltaTime;
 		//check time
-        if (timeNext < timeSince)
+        if (timeNext < timeNow)
         {
             //    Debug.Log("Time passed");
             //check space - fixed space
-            direction = startSpawnLoc - endSpawnLoc;
+            direction = endSpawnLoc - startSpawnLoc;
             Debug.Log(direction);
             for (int i = 0; i <= direction.magnitude; i++)
             {
@@ -42,7 +42,7 @@ public class TruckGeneration : MonoBehaviour {
                     Renderer rend = newTruck.GetComponent<Renderer>();
                     rend.material = materials[Random.Range(0, materials.Length - 1)];
                     //set new timeNext for the next spawn
-                    timeNext = timeNext + Random.Range(intervalMin, intervalMax);
+                    timeNext = timeNow + Random.Range(intervalMin, intervalMax);
                     break;
                 }
             }
