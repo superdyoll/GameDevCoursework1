@@ -31,12 +31,14 @@ public class TruckGeneration : MonoBehaviour {
             //    Debug.Log("Time passed");
             //check space - fixed space
             direction = startSpawnLoc - endSpawnLoc;
+            Debug.Log(direction);
             for (int i = 0; i <= direction.magnitude; i++)
             {
-                if (Physics.OverlapBox(startSpawnLoc + i * direction, new Vector3(5f,0f, 5f)).Length == 0)
+                if (Physics.OverlapBox(startSpawnLoc + i * direction.normalized, new Vector3(5f,0f, 5f)).Length == 0)
                 {
+                    Debug.Log(i);
                     //create a new object with random colour
-                    GameObject newTruck = Instantiate(prefab, startSpawnLoc + i * direction, Quaternion.identity);
+                    GameObject newTruck = Instantiate(prefab, startSpawnLoc + i * direction.normalized, Quaternion.identity);
                     Renderer rend = newTruck.GetComponent<Renderer>();
                     rend.material = materials[Random.Range(0, materials.Length - 1)];
                     //set new timeNext for the next spawn
