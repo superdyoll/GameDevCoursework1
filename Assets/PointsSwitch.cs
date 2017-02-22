@@ -8,14 +8,14 @@ public class PointsSwitch : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        tracks[1].gameObject.SetActive(false);
 	}
     
     void OnMouseDown()
     {
         foreach (GameObject track in tracks)
         {
-            track.SetActive(!track.activeSelf);
+            track.gameObject.SetActive(!track.activeSelf);
         }
     }
 }

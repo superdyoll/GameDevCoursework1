@@ -22,6 +22,7 @@ public class TrainMove : MonoBehaviour {
         //horiz is a/d
 
         float direction = Input.GetAxis("Horizontal");
+        Debug.Log(direction);
         if (direction != 0)
         {
             Vector3 horizonalPosition = transform.position + new Vector3(direction * smooth, 0);
@@ -42,8 +43,6 @@ public class TrainMove : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hitInfoRotate, 100f, layerMask))
             {
-                //Quaternion newRotation = Quaternion.LookRotation(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")), hitInfo.transform.forward);
-                //newRotation *= Quaternion.Euler(0, 90, 0);
                 Quaternion newRotation = Quaternion.LookRotation(hitInfoRotate.transform.right, hitInfoRotate.transform.up);
                 float yComponent = newRotation.eulerAngles.y;
                 if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) >= 180)
