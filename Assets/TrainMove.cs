@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TrainMove : MonoBehaviour {
 
-    public GameObject cube;
-    private Rigidbody rb;
+    //public GameObject cube;
+    //private Rigidbody rb;
 
 
     public float smooth = 3;
@@ -13,7 +13,7 @@ public class TrainMove : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		rb = cube.GetComponent<Rigidbody>();
+		//rb = cube.GetComponent<Rigidbody>();
 	}
 
     private void FixedUpdate()
@@ -21,6 +21,7 @@ public class TrainMove : MonoBehaviour {
         // Move left/right with <- and -> or 'a' and 'd'
 
         float direction = Input.GetAxis("Horizontal");
+        Debug.Log(direction);
         if (direction != 0)
         {
             // Movement
@@ -43,20 +44,11 @@ public class TrainMove : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hitInfoRotate, 100f, layerMask))
             {
-                //Quaternion newRotation = Quaternion.LookRotation(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")), hitInfo.transform.forward);
-                //newRotation *= Quaternion.Euler(0, 90, 0);
                 Quaternion newRotation = Quaternion.LookRotation(hitInfoRotate.transform.right, hitInfoRotate.transform.up);
                 float yComponent = newRotation.eulerAngles.y;
-                if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) != 0)
-                {
-
-                    Debug.Log(Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + " , ycomp: " + yComponent + " , old ycomp: " + transform.eulerAngles.y);
-
-                }
                 if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) >= 180)
                 {
                     float temp = yComponent - 180;
-                    Debug.Log("Old y: " + transform.rotation.eulerAngles.y + ", Newer y: " + yComponent + "Math1: " + Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + "Math2:" + temp);
                     yComponent = yComponent - 180;
                 }
                 //this if statement may be unecessary
@@ -69,5 +61,4 @@ public class TrainMove : MonoBehaviour {
             }
         }
     }
-
 }
