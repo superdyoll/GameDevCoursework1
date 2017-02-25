@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b1bb5894768b02f4b8b2f2be334bc897
+timeCreated: 1487953374
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: BluePrinted
+  fontNames:
+  - BluePrinted
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

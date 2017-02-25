@@ -19,6 +19,9 @@ public class TruckMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Quaternion rotation = transform.rotation;
+        Ray rayJoin = new Ray(transform.position, Vector3.left);
+
         //vert is w/s
         //horiz is a/d
         if (rb.velocity != Vector3.zero)
@@ -49,13 +52,13 @@ public class TruckMove : MonoBehaviour
                 if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) != 0)
                 {
 
-                    Debug.Log(Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + " , ycomp: " + yComponent + " , old ycomp: " + transform.eulerAngles.y);
+                    //Debug.Log(Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + " , ycomp: " + yComponent + " , old ycomp: " + transform.eulerAngles.y);
 
                 }
                 if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) >= 180)
                 {
                     float temp = yComponent - 180;
-                    Debug.Log("Old y: " + transform.rotation.eulerAngles.y + ", Newer y: " + yComponent + "Math1: " + Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + "Math2:" + temp);
+                    //Debug.Log("Old y: " + transform.rotation.eulerAngles.y + ", Newer y: " + yComponent + "Math1: " + Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + "Math2:" + temp);
                     yComponent = yComponent - 180;
                 }
                 //this if statement may be unecessary

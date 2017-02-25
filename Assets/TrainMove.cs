@@ -21,7 +21,7 @@ public class TrainMove : MonoBehaviour {
         // Move left/right with <- and -> or 'a' and 'd'
 
         float direction = Input.GetAxis("Horizontal");
-        Debug.Log(direction);
+        //Debug.Log(direction);
         if (direction != 0)
         {
             // Movement
@@ -30,11 +30,20 @@ public class TrainMove : MonoBehaviour {
             {
                 Vector3 rayPosition = horizonalPosition + new Vector3(0, 0, i);
                 Ray rayMove = new Ray(rayPosition, Vector3.down);
-                RaycastHit hitInfoMove;
+                RaycastHit hitInfoMove, hitInfoTruck;
                 if (Physics.Raycast(rayMove, out hitInfoMove, 25f, layerMask))
                 {
-                    transform.position = rayPosition;
-                    break;
+                    if (Physics.Raycast(rayMove, out hitInfoTruck, 25f))
+                    {
+                        if (hitInfoTruck.collider.gameObject.tag != "Truck")
+                        {
+                            transform.position = rayPosition;
+                            break;
+                        }else
+                        {
+                            print("TRUCK!!!!");
+                        }
+                    }
                 }
             }
 
