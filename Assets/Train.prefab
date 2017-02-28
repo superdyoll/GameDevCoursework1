@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54274719939487980}
   m_Layer: 0
   m_Name: Train
-  m_TagString: Untagged
+  m_TagString: Train
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,18 +92,18 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!65 &65992039785006804
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1787063860177026}
-  m_Material: {fileID: 13400000, guid: ce02c5e8cfd3dc5408b6c096a4a5e083, type: 2}
+  m_Material: {fileID: 13400000, guid: 0368b892a842ea74db299636cd7875e6, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1787063860177026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbe4ad807558154890e5c254fcbb9ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 30599b53584909c4f9b59694da5aac4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1787063860177026}
-  smooth: 1
+  smooth: 3
+  layerMask: 256

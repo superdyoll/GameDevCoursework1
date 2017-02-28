@@ -19,6 +19,9 @@ public class TruckMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Quaternion rotation = transform.rotation;
+        Ray rayJoin = new Ray(transform.position, Vector3.left);
+
         //vert is w/s
         //horiz is a/d
         if (rb.velocity != Vector3.zero)
@@ -29,23 +32,44 @@ public class TruckMove : MonoBehaviour
                 Vector3 rayPosition = horizonalPosition + new Vector3(0, 0, i);
                 Ray rayMove = new Ray(rayPosition, Vector3.down);
                 RaycastHit hitInfoMove;
-                if (Physics.Raycast(rayMove, out hitInfoMove, 100f, layerMask))
+                if (Physics.Raycast(rayMove, out hitInfoMove, 25f, layerMask))
                 {
                     transform.position = rayPosition;
                     break;
                 }
             }
 
-            Ray rayRotate = new Ray(transform.position, Vector3.down);
-            RaycastHit hitInfo;
+            // Rotation
+            Ray ray = new Ray(transform.position, Vector3.down);
+            RaycastHit hitInfoRotate;
 
-            if (Physics.Raycast(rayRotate, out hitInfo, 100f, layerMask))
+            if (Physics.Raycast(ray, out hitInfoRotate, 100f, layerMask))
             {
                 //Quaternion newRotation = Quaternion.LookRotation(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")), hitInfo.transform.forward);
                 //newRotation *= Quaternion.Euler(0, 90, 0);
-                Quaternion temp = Quaternion.LookRotation(hitInfo.transform.right, hitInfo.transform.up);
-                transform.rotation = temp;
+                Quaternion newRotation = Quaternion.LookRotation(hitInfoRotate.transform.right, hitInfoRotate.transform.up);
+                float yComponent = newRotation.eulerAngles.y;
+                if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) != 0)
+                {
+
+                    //Debug.Log(Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + " , ycomp: " + yComponent + " , old ycomp: " + transform.eulerAngles.y);
+
+                }
+                if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) >= 180)
+                {
+                    float temp = yComponent - 180;
+                    //Debug.Log("Old y: " + transform.rotation.eulerAngles.y + ", Newer y: " + yComponent + "Math1: " + Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + "Math2:" + temp);
+                    yComponent = yComponent - 180;
+                }
+                //this if statement may be unecessary
+                if (yComponent >= 360)
+                {
+                    yComponent = yComponent - 360;
+                }
+                newRotation = Quaternion.Euler(newRotation.eulerAngles.x, yComponent, newRotation.eulerAngles.z);
+                transform.rotation = newRotation;
             }
         }
+
     }
 }
