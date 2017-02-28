@@ -2427,8 +2427,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 60, y: 1, z: 1}
-  m_Center: {x: -50, y: 0, z: 60}
+  m_Size: {x: 50, y: 1, z: 1}
+  m_Center: {x: -55, y: 0, z: 60}
 --- !u!1 &920662308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2492,7 +2492,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: -80, y: 0, z: 60}
-  - {x: -20, y: 0, z: 60}
+  - {x: -30, y: 0, z: 60}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 1
