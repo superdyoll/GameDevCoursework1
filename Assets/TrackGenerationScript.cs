@@ -7,23 +7,38 @@ public class TrackGenerationScript : MonoBehaviour {
 
     private GameObject trackHolder;
     public Material trackMat;
-
-    //public Vector3[] poses;
-
-    public Vector3[][] allCorners = {
-    new Vector3[] { new Vector3(-150f, 0f, 50f), new Vector3(-100f, 0f, 50f) } ,
-    new Vector3[] { new Vector3(-100f, 0f, 50f), new Vector3(-90f, 0f, 50f), new Vector3(-90f, 0f, 60f) },
-    new Vector3[] { new Vector3(-90f,0,50f), new Vector3(-40f,0,50f)},
-    new Vector3[] { new Vector3(-30f,0,50f), new Vector3(-40f,0,50f), new Vector3(-40f, 0, 40f) },
-    new Vector3[] { new Vector3(-90f,0,40f), new Vector3(-40f,0f,40f)},
-    new Vector3[] { new Vector3(-30f,0f,50f), new Vector3(-20f,0,50f)},
-    new Vector3[] { new Vector3(-20f,0f,50f), new Vector3(-10f,0,50f), new Vector3(-10f, 0, 40f) }
+    public int mapNo;
+    //jagged 2d array of all pieces of track and points
+    private Vector3[][] map1 = 
+    {
+        new Vector3[] { new Vector3(-150f, 0f, 50f), new Vector3(-100f, 0f, 50f) } ,
+        new Vector3[] { new Vector3(-100f, 0f, 50f), new Vector3(-90f, 0f, 50f), new Vector3(-90f, 0f, 60f) },
+        new Vector3[] { new Vector3(-90f, 0f, 50f), new Vector3(-40f, 0f, 50f)},
+        new Vector3[] { new Vector3(-30f, 0f, 50f), new Vector3(-40f, 0f, 50f), new Vector3(-40f, 0f, 40f) },
+        new Vector3[] { new Vector3(-90f, 0f, 40f), new Vector3(-40f, 0f, 40f)},
+        new Vector3[] { new Vector3(-30f, 0f, 50f), new Vector3(-20f, 0f, 50f)},
+        new Vector3[] { new Vector3(-20f, 0f, 50f), new Vector3(-10f, 0f, 50f), new Vector3(-10f, 0f, 40f) }
     };
-    
+
+    private Vector3[][] map2 =
+    {
+        new Vector3[] { new Vector3(-199f, 0f, 0f), new Vector3(0f, 0f, 0f) },
+        new Vector3[] { new Vector3(0f, 0f, 0f), new Vector3(15f, 0f, 0f), new Vector3(15f, 0f, 15f) },
+        new Vector3[] { new Vector3(15f, 0f, 0f), new Vector3(200f, 0f, 0f) },
+        new Vector3[] { new Vector3(15f,0f, 15f), new Vector3(25f, 0f, 15f) },
+        new Vector3[] { new Vector3(25f, 0f, 15f), new Vector3(40f, 0f, 15f), new Vector3(40f, 0f, 30f) },
+        new Vector3[] { new Vector3(40f, 0f, 15f), new Vector3(55f, 0f, 15f)},
+        new Vector3[] { new Vector3(40f, 0f, 30f), new Vector3(55f, 0f, 30f)}
+    };
+    public List<Vector3[][]> maps = new List<Vector3[][]>();
 	void Start () {
+        //place mapLayouts into maps var.
+        maps.Add(map1);
+        maps.Add(map2);
+        //create an empty gameobject to hold all the track
         trackHolder = new GameObject("TrackHolder");
-        //Vector3[] positions = { new Vector3(100f, 0.1f, 100f), new Vector3(100f, 0.1f, 150f) };
-        foreach (Vector3[] set in allCorners)
+        //for each array in the array draw the track, if the array is 3 long then its a set of points, if 2 then its a straight
+        foreach (Vector3[] set in maps[mapNo])
         {
             if (set.Length == 2)
             {
@@ -50,7 +65,6 @@ public class TrackGenerationScript : MonoBehaviour {
         if (positions[0].z != positions[1].z)
         {
             Vector3 lineDirection = positions[1] - positions[0];
-            //TODO: fix this!, make sure the boxes work in all 4 directions
             float sign = (Math.Abs(positions[1].z)) < (Math.Abs(positions[0].z)) ? 1.0f : -1.0f;
             float angle = Vector3.Angle(lineDirection.normalized, Vector3.right) * sign;
             newTrack.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
