@@ -17,7 +17,7 @@ public class TrackGenerationScript : MonoBehaviour {
     new Vector3[] { new Vector3(-30f,0,50f), new Vector3(-40f,0,50f), new Vector3(-40f, 0, 40f) },
     new Vector3[] { new Vector3(-90f,0,40f), new Vector3(-40f,0f,40f)},
     new Vector3[] { new Vector3(-30f,0f,50f), new Vector3(-20f,0,50f)},
-    new Vector3[] { new Vector3(-20f,0,50f), new Vector3(-10f, 0, 40f), new Vector3(-10f,0,50f) }
+    new Vector3[] { new Vector3(-20f,0f,50f), new Vector3(-10f,0,50f), new Vector3(-10f, 0, 40f) }
     };
     
 	void Start () {
@@ -52,11 +52,7 @@ public class TrackGenerationScript : MonoBehaviour {
             Vector3 lineDirection = positions[1] - positions[0];
             //TODO: fix this!, make sure the boxes work in all 4 directions
             float sign = (Math.Abs(positions[1].z)) < (Math.Abs(positions[0].z)) ? 1.0f : -1.0f;
-            float angle = Vector3.Angle(lineDirection.normalized, Vector3.forward) * sign;
-            if (angle > 90 && sign == 1.0f)
-            {
-                angle = angle - 90;
-            }
+            float angle = Vector3.Angle(lineDirection.normalized, Vector3.right) * sign;
             newTrack.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
         }
         myBox.center = Vector3.zero;
