@@ -2,19 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinDetection : MonoBehaviour {
 
     public string levelToLoad;
-    public Canvas canvas;
+    public GameObject canvas;
     public int winByTruckX;
     public int sizeWin;
 
-    private List<GameObject> winTruckList;
+    public List<GameObject> winTruckList;
     private GameObject[] allTrucks;
 
     void Start()
     {
+        GameObject mainCam = GameObject.Find("Main Camera");
+        canvas = new GameObject("CanvasUI");
+        canvas.transform.parent = mainCam.transform;
+        canvas.AddComponent<RectTransform>();
+        Canvas myCanvas = canvas.AddComponent<Canvas>();
+        myCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.AddComponent<CanvasScaler>();
+        canvas.AddComponent<GraphicRaycaster>();
+
+        GameObject panel = new GameObject("Panel Display");
+        RectTransform myRect = panel.AddComponent<RectTransform>();
+        myRect.anchorMax = new Vector2(1f, 1f);
+        myRect.anchorMin = new Vector2(1f, 1f);
+        myRect.pivot = new Vector2(1f, 1f);
+        myRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50f);
+        myRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50 * winTruckList.Count);
+        panel.AddComponent<CanvasRenderer>();
+        panel.AddComponent<Image>();
+        panel.AddComponent<HorizontalLayoutGroup>();
+        panel.transform.parent = canvas.transform;
+        //GameObject panel = canvas.transform.GetChild(0).gameObject;
+        //panel.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50 * winTruckList.Count);
+
+        for (int i = 0; i < winTruckList.Count; i++ )
+        {
+            GameObject newImageObj = new GameObject("Truck" + (i+1).ToString());
+            newImageObj.AddComponent<RectTransform>();
+            newImageObj.AddComponent<CanvasRenderer>();
+            Image newImageComp = newImageObj.AddComponent<Image>();
+            newImageComp.color = winTruckList[i].GetComponent<Renderer>().material.color;
+            newImageObj.transform.parent = panel.transform;
+            newImageObj.SetActive(true);
+        }
+
+        
+
         //genWinTruckList();
 
     }
@@ -42,6 +79,11 @@ public class WinDetection : MonoBehaviour {
         {
             winTruckList.Add(allTrucks[i]);
         }
+    }
+
+    private void drawTrucksWanted()
+    {
+
     }
 
     void OnTriggerEnter(Collider other)
