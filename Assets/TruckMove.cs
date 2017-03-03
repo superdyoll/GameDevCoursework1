@@ -177,13 +177,19 @@ public class TruckMove : MonoBehaviour, ICube
 
     public void RemoveAllConnections(GameObject caller)
     {
-        foreach (GameObject link in linked)
+        for(int i = 0; i <=1; i ++)
         {
-            if (link != null)
+            if (linked[i] != null)
             {
-                TruckMove localTruck = link.GetComponent<TruckMove>();
-                if (localTruck != null && localTruck != caller)
+                TruckMove localTruck = linked[i].GetComponent<TruckMove>();
+                linked[i] = null;
+                if (localTruck == caller)
                 {
+                    print("Same Train");
+                }
+                if (localTruck != null && localTruck != caller && localTruck != truck && localTruck != train)
+                {
+                    //print("Other truck");
                     localTruck.RemoveAllConnections(truck);
                 }
             }

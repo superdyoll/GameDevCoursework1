@@ -36,7 +36,7 @@ public class TrainMove : MonoBehaviour, ICube
                     TruckMove truckMove = link.GetComponent<TruckMove>();
                     if (truckMove != null)
                     {
-                        truckMove.RemoveAllConnections();
+                        truckMove.RemoveAllConnections(train);
                     }
                 }
             }
