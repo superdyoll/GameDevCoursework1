@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class WinDetection : MonoBehaviour {
 
     public string levelToLoad;
-    public GameObject canvas;
     public int winByTruckX;
     public int sizeWin;
 
     public List<GameObject> winTruckList;
     private GameObject[] allTrucks;
     private RectTransform myRect;
+    private GameObject canvas;
 
     void Start()
     {
