@@ -30,7 +30,9 @@ public class TrackGenerationScript : MonoBehaviour {
         new Vector3[] { new Vector3(40f, 0f, 15f), new Vector3(55f, 0f, 15f)},
         new Vector3[] { new Vector3(40f, 0f, 30f), new Vector3(55f, 0f, 30f)}
     };
+
     public List<Vector3[][]> maps = new List<Vector3[][]>();
+
 	void Start () {
         //place mapLayouts into maps var.
         maps.Add(map1);

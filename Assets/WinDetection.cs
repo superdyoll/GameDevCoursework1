@@ -7,19 +7,25 @@ using UnityEngine.UI;
 public class WinDetection : MonoBehaviour {
 
     public string levelToLoad;
-    public int winByTruckX;
-    public int sizeWin;
+    public int winByTruckX = 0;
+    public int sizeWin = 0;
 
-    public List<GameObject> winTruckList;
-    private GameObject[] allTrucks;
+    public GameObject[] allTrucks;
+
+    private List<GameObject> winTruckList = new List<GameObject>();
     private RectTransform myRect;
     private GameObject canvas;
 
     void Start()
     {
-        drawTrucksWanted();
-        //genWinTruckList();
-        gameObject.transform.localScale = new Vector3((float)sizeWin,1,1.5f);
+        Debug.Log(allTrucks.Length);
+        if (allTrucks.Length != 0 && sizeWin != 0 && winByTruckX != 0)
+        {
+            genWinTruckList();
+            drawTrucksWanted();
+        }
+       
+        gameObject.transform.localScale = new Vector3(sizeWin*1.5f,1,1.5f);
     }
 
     private void genWinTruckList()
@@ -39,7 +45,6 @@ public class WinDetection : MonoBehaviour {
                     duplicate = false;
                 }
             }
-            usedTrucks.Add(tempRandom);
         }
         foreach (int i in usedTrucks)
         {
@@ -90,6 +95,21 @@ public class WinDetection : MonoBehaviour {
     {
         if(other.gameObject.tag == "Train")
         {
+
+            GameObject truck = other.GetComponent<TrainMove>().GetTruckOnRight();
+
+            for (int i = 0; i < sizeWin; i++)
+            {
+                if (winTruckList[i].GetComponent<Renderer>().material != truck.GetComponent<Renderer>().material)
+                {
+                    return;
+                }
+                else if(i != (sizeWin -1))
+                {
+                    truck = truck.GetComponent<TruckMove>().GetTruckOnRight();
+                }
+            }
+
             print("loading scene " + levelToLoad);
             SceneManager.LoadScene(levelToLoad);
         }

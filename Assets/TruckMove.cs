@@ -68,20 +68,11 @@ public class TruckMove : MonoBehaviour, ICube
 
                 if (Physics.Raycast(ray, out hitInfoRotate, 100f, layerMask))
                 {
-                    //Quaternion newRotation = Quaternion.LookRotation(new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical")), hitInfo.transform.forward);
-                    //newRotation *= Quaternion.Euler(0, 90, 0);
                     Quaternion newRotation = Quaternion.LookRotation(hitInfoRotate.transform.right, hitInfoRotate.transform.up);
                     float yComponent = newRotation.eulerAngles.y;
-                    if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) != 0)
-                    {
-
-                        //Debug.Log(Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + " , ycomp: " + yComponent + " , old ycomp: " + transform.eulerAngles.y);
-
-                    }
                     if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) >= 180)
                     {
                         float temp = yComponent - 180;
-                        //Debug.Log("Old y: " + transform.rotation.eulerAngles.y + ", Newer y: " + yComponent + "Math1: " + Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) + "Math2:" + temp);
                         yComponent = yComponent - 180;
                     }
                     //this if statement may be unecessary
