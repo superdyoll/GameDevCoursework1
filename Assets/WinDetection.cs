@@ -10,6 +10,8 @@ public class WinDetection : MonoBehaviour {
     public int winByTruckX = 0;
     public int sizeWin = 0;
 
+    public bool justTrain = false;
+
     public GameObject[] allTrucks;
 
     private List<GameObject> winTruckList = new List<GameObject>();
@@ -96,17 +98,20 @@ public class WinDetection : MonoBehaviour {
         if(other.gameObject.tag == "Train")
         {
 
-            GameObject truck = other.GetComponent<TrainMove>().GetTruckOnRight();
-
-            for (int i = 0; i < sizeWin; i++)
+            if (!justTrain)
             {
-                if (winTruckList[i].GetComponent<Renderer>().material != truck.GetComponent<Renderer>().material)
+                GameObject truck = other.GetComponent<TrainMove>().GetTruckOnRight();
+
+                for (int i = 0; i < sizeWin; i++)
                 {
-                    return;
-                }
-                else if(i != (sizeWin -1))
-                {
-                    truck = truck.GetComponent<TruckMove>().GetTruckOnRight();
+                    if (winTruckList[i].GetComponent<Renderer>().material != truck.GetComponent<Renderer>().material)
+                    {
+                        return;
+                    }
+                    else if (i != (sizeWin - 1))
+                    {
+                        truck = truck.GetComponent<TruckMove>().GetTruckOnRight();
+                    }
                 }
             }
 
