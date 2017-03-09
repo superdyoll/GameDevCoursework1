@@ -8,6 +8,8 @@ public class TrackGenerationScript : MonoBehaviour {
     private GameObject trackHolder;
     public Material trackMat;
     public int mapNo;
+    public Material OffColorMaterial;
+
     //jagged 2d array of all pieces of track and points
     private Vector3[][] map1 = 
     {
@@ -104,6 +106,8 @@ public class TrackGenerationScript : MonoBehaviour {
         newButton.layer = 9;
         newButton.GetComponent<Renderer>().material.color = Color.red;
         PointsSwitch pointsScript = newButton.AddComponent<PointsSwitch>();
-        pointsScript.tracks = new GameObject[] { track1, track2 };
+        pointsScript.OffColor = OffColorMaterial;
+        pointsScript.OnColor = trackMat;
+        pointsScript.Tracks = new PointsSwitch.TracksClass[] { new PointsSwitch.TracksClass(track1), new PointsSwitch.TracksClass(track2) };
     }
 }

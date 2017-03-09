@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ Prefab:
     - target: {fileID: 114497560033071176, guid: 6a982b2aa01f39846bc1053c8141ee61,
         type: 2}
       propertyPath: currentLevelNumber
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a982b2aa01f39846bc1053c8141ee61, type: 2}
@@ -241,6 +241,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114085205593391054, guid: 7e755675064dc2c438cee3e2912e826c,
+        type: 2}
+      propertyPath: TrackGameObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4058434454230054, guid: 7e755675064dc2c438cee3e2912e826c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -50.69
@@ -315,6 +320,36 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 1.92
       objectReference: {fileID: 0}
+    - target: {fileID: 114085205593391054, guid: 7e755675064dc2c438cee3e2912e826c,
+        type: 2}
+      propertyPath: onColor
+      value: 
+      objectReference: {fileID: 2100000, guid: cd250d1c584d41a429999325e065ce0d, type: 2}
+    - target: {fileID: 114085205593391054, guid: 7e755675064dc2c438cee3e2912e826c,
+        type: 2}
+      propertyPath: offColor
+      value: 
+      objectReference: {fileID: 2100000, guid: 76d7114a936dc104888272c28fa08846, type: 2}
+    - target: {fileID: 114085205593391054, guid: 7e755675064dc2c438cee3e2912e826c,
+        type: 2}
+      propertyPath: TrackGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 815639991}
+    - target: {fileID: 114085205593391054, guid: 7e755675064dc2c438cee3e2912e826c,
+        type: 2}
+      propertyPath: TrackGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1369897895}
+    - target: {fileID: 114085205593391054, guid: 7e755675064dc2c438cee3e2912e826c,
+        type: 2}
+      propertyPath: OnColor
+      value: 
+      objectReference: {fileID: 2100000, guid: cd250d1c584d41a429999325e065ce0d, type: 2}
+    - target: {fileID: 114085205593391054, guid: 7e755675064dc2c438cee3e2912e826c,
+        type: 2}
+      propertyPath: OffColor
+      value: 
+      objectReference: {fileID: 2100000, guid: 76d7114a936dc104888272c28fa08846, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e755675064dc2c438cee3e2912e826c, type: 2}
   m_IsPrefabParent: 0
@@ -723,11 +758,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1548721443467892, guid: 5edbc49a07bf76847a501a03ff7fc346, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1864187835454208, guid: 5edbc49a07bf76847a501a03ff7fc346, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5edbc49a07bf76847a501a03ff7fc346, type: 2}
@@ -779,7 +814,7 @@ Prefab:
     - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
         type: 2}
       propertyPath: levelToLoad
-      value: Trainyard2
+      value: Level 4
       objectReference: {fileID: 0}
     - target: {fileID: 64669430028961282, guid: 2ff9301d32c527849b8cec6a638f68b0,
         type: 2}

@@ -176,6 +176,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114497560033071176, guid: 6a982b2aa01f39846bc1053c8141ee61,
+        type: 2}
+      propertyPath: currentLevelNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a982b2aa01f39846bc1053c8141ee61, type: 2}
   m_IsPrefabParent: 0
@@ -428,6 +433,16 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 093d76090e79c3b43b36da80a847f46e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1785791956 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1939439828244002, guid: e7a49e09d3f1c124d9041ebb2e1c327c,
+    type: 2}
+  m_PrefabInternal: {fileID: 701401494}
+--- !u!1 &1927592232 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1939439828244002, guid: e7a49e09d3f1c124d9041ebb2e1c327c,
+    type: 2}
+  m_PrefabInternal: {fileID: 2022770976}
 --- !u!1001 &1980698582
 Prefab:
   m_ObjectHideFlags: 0
@@ -581,6 +596,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
+        type: 2}
+      propertyPath: allTrucks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4666613882101078, guid: 2ff9301d32c527849b8cec6a638f68b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 100
@@ -616,7 +636,7 @@ Prefab:
     - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
         type: 2}
       propertyPath: levelToLoad
-      value: Level 2
+      value: Level 3
       objectReference: {fileID: 0}
     - target: {fileID: 64669430028961282, guid: 2ff9301d32c527849b8cec6a638f68b0,
         type: 2}
@@ -628,6 +648,16 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
+        type: 2}
+      propertyPath: allTrucks.Array.data[0]
+      value: 
+      objectReference: {fileID: 1785791956}
+    - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
+        type: 2}
+      propertyPath: allTrucks.Array.data[1]
+      value: 
+      objectReference: {fileID: 1927592232}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ff9301d32c527849b8cec6a638f68b0, type: 2}
   m_IsPrefabParent: 0

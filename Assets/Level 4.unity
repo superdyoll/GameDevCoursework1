@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackMat: {fileID: 2100000, guid: cd250d1c584d41a429999325e065ce0d, type: 2}
   mapNo: 1
+  OffColorMaterial: {fileID: 2100000, guid: 76d7114a936dc104888272c28fa08846, type: 2}
 --- !u!4 &180652542
 Transform:
   m_ObjectHideFlags: 0
