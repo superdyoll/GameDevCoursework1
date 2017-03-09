@@ -8,20 +8,27 @@ using UnityEngine.Rendering;
 public class WinDetection : MonoBehaviour {
 
     public string levelToLoad;
-    public GameObject canvas;
-    public int winByTruckX;
-    public int sizeWin;
+    public int winByTruckX = 0;
+    public int sizeWin = 0;
 
-    public List<GameObject> winTruckList;
-    private GameObject[] allTrucks;
+    public bool justTrain = false;
+
+    public GameObject[] allTrucks;
+
+    private List<GameObject> winTruckList = new List<GameObject>();
     private RectTransform myRect;
+    private GameObject canvas;
 
     void Start()
     {
+        Debug.Log(allTrucks.Length);
+        if (allTrucks.Length != 0 && sizeWin != 0 && winByTruckX != 0)
+        {
+            genWinTruckList();
         drawTrucksWanted();
-        //genWinTruckList();
-        gameObject.transform.localScale = new Vector3(1.5f,1f,1.5f);
-        genTruckPlanes();
+    }
+       
+        gameObject.transform.localScale = new Vector3(sizeWin*1.5f,1,1.5f);
     }
 
     private void genTruckPlanes()
@@ -67,7 +74,6 @@ public class WinDetection : MonoBehaviour {
                     duplicate = false;
                 }
             }
-            usedTrucks.Add(tempRandom);
         }
         foreach (int i in usedTrucks)
         {
@@ -115,10 +121,27 @@ public class WinDetection : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        //if(other.gameObject.tag == "Train")
-        //{
-        //    print("loading scene " + levelToLoad);
-        //    SceneManager.LoadScene(levelToLoad);
-        //}
+        if(other.gameObject.tag == "Train")
+        {
+
+            if (!justTrain)
+            {
+                GameObject truck = other.GetComponent<TrainMove>().GetTruckOnRight();
+
+                for (int i = 0; i < sizeWin; i++)
+                {
+                    if (winTruckList[i].GetComponent<Renderer>().material != truck.GetComponent<Renderer>().material)
+                    {
+                        return;
+                    }
+                    else if (i != (sizeWin - 1))
+                    {
+                        truck = truck.GetComponent<TruckMove>().GetTruckOnRight();
+                    }
+                }
+            }
+
+            print("loading scene " + levelToLoad);
+            SceneManager.LoadScene(levelToLoad);
     }
 }

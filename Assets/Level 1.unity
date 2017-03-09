@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -263,6 +263,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a22d782cb6a965843852fcb6d1c89b0f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1067792212 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1787063860177026, guid: a22d782cb6a965843852fcb6d1c89b0f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1067792211}
 --- !u!1001 &1337022886
 Prefab:
   m_ObjectHideFlags: 0
@@ -483,6 +488,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1864187835454208, guid: 5edbc49a07bf76847a501a03ff7fc346, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5edbc49a07bf76847a501a03ff7fc346, type: 2}
   m_IsPrefabParent: 0
@@ -493,6 +502,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
+        type: 2}
+      propertyPath: allTrucks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4666613882101078, guid: 2ff9301d32c527849b8cec6a638f68b0, type: 2}
       propertyPath: m_LocalPosition.x
       value: 100
@@ -538,6 +552,26 @@ Prefab:
     - target: {fileID: 64669430028961282, guid: 2ff9301d32c527849b8cec6a638f68b0,
         type: 2}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
+        type: 2}
+      propertyPath: justTrain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
+        type: 2}
+      propertyPath: allTrucks.Array.data[0]
+      value: 
+      objectReference: {fileID: 1067792212}
+    - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
+        type: 2}
+      propertyPath: winByTruckX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
+        type: 2}
+      propertyPath: sizeWin
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
