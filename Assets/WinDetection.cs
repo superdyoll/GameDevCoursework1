@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 
-public class WinDetection : MonoBehaviour {
+public class WinDetection : MonoBehaviour
+{
 
     public string levelToLoad;
     public int winByTruckX = 0;
@@ -25,36 +26,84 @@ public class WinDetection : MonoBehaviour {
         if (allTrucks.Length != 0 && sizeWin != 0 && winByTruckX != 0)
         {
             genWinTruckList();
-        drawTrucksWanted();
-    }
-       
-        gameObject.transform.localScale = new Vector3(sizeWin*1.5f,1,1.5f);
+            drawTrucksWanted();
+            genTruckPlanes();
+        }
+        if (!justTrain)
+        {
+            gameObject.transform.localScale = new Vector3(sizeWin * 1f + 1.5f, 1, 1.5f);
+            gameObject.transform.position = gameObject.transform.position + new Vector3(-10f, 0f, 0f);
+        }
     }
 
     private void genTruckPlanes()
     {
-        int half = winTruckList.Count/2;
+        int half = winTruckList.Count / 2;
         int mod = winTruckList.Count % 2;
+        Vector3 centre = gameObject.transform.position;
+        Vector3 gapBetweenBoxes = new Vector3(15f, 0f, 0f);
+        Vector3 offset = new Vector3(7.5f, 0f, 0f);
+
         if (mod == 0)
         {
-            //a ting
-        }
-        else
-        {
-            gameObject.GetComponent<Renderer>().material = winTruckList[half].GetComponent<Renderer>().material;
-            Vector3 oldGameObjectLoc = gameObject.transform.position;
-            Vector3 gapBetweenBoxes = new Vector3(15f, 0f, 0f);
-            for (int i = 1; i < half; i++)
+            //length is even
+            float halfF = half - 0.5f;
+            for (int i = 0; i < half; i++)
             {
                 for (int j = -1; j < 2; j = j + 2)
                 {
                     GameObject newTruckPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                    newTruckPlane.name = "ASDFGHJKL";
+                    newTruckPlane.transform.localScale = new Vector3(1.5f, 1f, 1.5f);
+                    newTruckPlane.name = "EVEN";
+                    newTruckPlane.GetComponent<Renderer>().material = winTruckList[(int) (halfF + (j *(i + 0.5f)))].GetComponent<Renderer>().material;
+                    newTruckPlane.transform.position = j * (gapBetweenBoxes * i + offset) + centre;
+                    Debug.Log(j * (gapBetweenBoxes * i));
+                }
+            }
+            //offset first loc by 7.5f
+        }
+        else
+        {
+            //length is odd
+            for (int i = 0; i <= half; i++)
+            {
+                for (int j = -1; j < 2; j = j + 2)
+                {
+                    GameObject newTruckPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+                    newTruckPlane.transform.localScale = new Vector3(1.5f, 1f, 1.5f);
+                    newTruckPlane.name = "ODD";
                     newTruckPlane.GetComponent<Renderer>().material = winTruckList[half + (j * i)].GetComponent<Renderer>().material;
-                    newTruckPlane.transform.position = oldGameObjectLoc + (j * gapBetweenBoxes);
+                    newTruckPlane.transform.position = j * (gapBetweenBoxes * i) + centre;
                 }
             }
         }
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+
+
+
+        //if (mod == 0)
+        //{
+        //    offsetLoc = 7.5f;
+
+        //}
+        //else
+        //{
+        //    GameObject newTruckPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        //    newTruckPlane.name = "ASDFGHJKL";
+        //    newTruckPlane.GetComponent<Renderer>().material = winTruckList[(int)half].GetComponent<Renderer>().material;
+        //}
+
+        //for (int i = 1; i < half; i++)
+        //{
+        //    for (int j = -1; j < 2; j = j + 2)
+        //    {
+        //        GameObject newTruckPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        //        newTruckPlane.name = "ASDFGHJKL";
+        //        newTruckPlane.GetComponent<Renderer>().material = winTruckList[(int) half + (j * i)].GetComponent<Renderer>().material;
+        //        newTruckPlane.transform.position = new Vector3((j * (gapBetweenBoxes.x * i + offsetLoc)) + centre.x, centre.y, centre.z);
+        //    }
+        //}
     }
 
     private void genWinTruckList()
@@ -119,9 +168,14 @@ public class WinDetection : MonoBehaviour {
         myRect.anchoredPosition = new Vector3(0, 0, 0);
     }
 
+    void OnTriggerExit(Collider other)
+    {
+
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Train")
+        if (other.gameObject.tag == "Train")
         {
 
             if (!justTrain)
@@ -143,5 +197,6 @@ public class WinDetection : MonoBehaviour {
 
             print("loading scene " + levelToLoad);
             SceneManager.LoadScene(levelToLoad);
+        }
     }
 }

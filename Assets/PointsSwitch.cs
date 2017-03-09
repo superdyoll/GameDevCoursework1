@@ -19,9 +19,21 @@ public class PointsSwitch : MonoBehaviour {
     
     void OnMouseDown()
     {
+        bool obstructed = false;
         foreach (GameObject track in tracks)
         {
-            track.gameObject.SetActive(!track.activeSelf);
+
+            foreach (Collider obsticles in Physics.OverlapBox(track.transform.position + Vector3.up * 5, new Vector3(track.GetComponent<BoxCollider>().size.x / 2, 0f, 1f), track.transform.rotation))
+            {
+                if (obsticles.tag == "Train" || obsticles.tag == "Truck")
+                {
+                    obstructed = true;
+                }
+            }
+            if (!obstructed)
+            {
+                track.gameObject.SetActive(!track.activeSelf);
+            }
         }
     }
 }
