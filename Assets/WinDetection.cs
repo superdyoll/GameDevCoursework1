@@ -20,6 +20,8 @@ public class WinDetection : MonoBehaviour
     private RectTransform myRect;
     private GameObject canvas;
 
+    private bool inited = false;
+
     void Start()
     {
         initStuff();
@@ -27,8 +29,9 @@ public class WinDetection : MonoBehaviour
 
     public void initStuff()
     {
-        if (allTrucks.Length != 0 && sizeWin != 0 && winByTruckX != 0)
+        if (allTrucks.Length != 0 && sizeWin != 0 && winByTruckX != 0 && !inited)
         {
+            inited = true;
             genWinTruckList();
             drawTrucksWanted();
             genTruckPlanes();
@@ -188,6 +191,10 @@ public class WinDetection : MonoBehaviour
 
                 for (int i = 0; i < sizeWin; i++)
                 {
+                    if (truck == null)
+                    {
+                        return;
+                    }
                     if (winTruckList[i].GetComponent<Renderer>().material != truck.GetComponent<Renderer>().material)
                     {
                         return;

@@ -49,15 +49,15 @@ public class TrackGenerationScript : MonoBehaviour {
     private Vector3[][] map6 =
     {
         new Vector3[] { new Vector3(-90f, 0f, 0f), new Vector3(-70f, 0f, 0f) } ,
-        new Vector3[] { new Vector3(-70f, 0f, 0f), new Vector3(-55f, 0f, 0f), new Vector3(-55f, 0f, -15f) } ,
-        new Vector3[] { new Vector3(-55f, 0f, 0f), new Vector3(-45f,0f,0f) } ,
-        new Vector3[] { new Vector3(-55f, 0f, -15f), new Vector3(-45f, 0f, -15f) } ,
-        new Vector3[] { new Vector3(-30f, 0f, 0f), new Vector3(-45f, 0f, 0f), new Vector3(-45f, 0f, -15f) } ,
-        new Vector3[] { new Vector3(-30f, 0f, 0f), new Vector3(-15f, 0f, 0f), new Vector3(-15f, 0f, 15f) } ,
-        new Vector3[] { new Vector3(-15f, 0f, 0f), new Vector3(-5f,0f, 0f) } ,
-        new Vector3[] { new Vector3(-15f, 0f, 15f), new Vector3(-5f,0f, 15f) } ,
-        new Vector3[] { new Vector3(10f,0f,0f), new Vector3(-5f, 0f, 0f), new Vector3(-5f, 0f, 15f) } ,
-        new Vector3[] { new Vector3(10f, 0f, 0f), new Vector3(90f, 0f, 0f)}
+        new Vector3[] { new Vector3(-70f, 0f, 0f), new Vector3(-50f, 0f, 0f), new Vector3(-50f, 0f, -20f) } ,
+        new Vector3[] { new Vector3(-50f, 0f, 0f), new Vector3(-30f,0f,0f) } ,
+        new Vector3[] { new Vector3(-50f, 0f, -20f), new Vector3(-30f, 0f, -20f) } ,
+        new Vector3[] { new Vector3(-10f, 0f, 0f), new Vector3(-30f, 0f, 0f), new Vector3(-30f, 0f, -20f) } ,
+        new Vector3[] { new Vector3(-10f, 0f, 0f), new Vector3(10f, 0f, 0f), new Vector3(10f, 0f, 20f) } ,
+        new Vector3[] { new Vector3(10f, 0f, 0f), new Vector3(30f,0f, 0f) } ,
+        new Vector3[] { new Vector3(10f, 0f, 20f), new Vector3(30f,0f, 20f) } ,
+        new Vector3[] { new Vector3(50f,0f,0f), new Vector3(30f, 0f, 0f), new Vector3(30f, 0f, 20f) } ,
+        new Vector3[] { new Vector3(50f, 0f, 0f), new Vector3(130f, 0f, 0f)}
     };
 
     private Vector3[][] testMap =

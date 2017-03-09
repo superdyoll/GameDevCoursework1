@@ -16,15 +16,12 @@ public class TruckGeneration : MonoBehaviour {
     private float timeNow = 0f; 
     private float timeNext = 0f;
 
-    private bool initialised = false;
-
     public void Start()
     {
         genTrucksToSpawn();
         GameObject goal = GameObject.Find("Goal");
         goal.GetComponent<WinDetection>().allTrucks = nextTrucks.ToArray();
         goal.GetComponent<WinDetection>().initStuff();
-        //initialised = true;
     }
 
     private void genTrucksToSpawn()
@@ -42,10 +39,6 @@ public class TruckGeneration : MonoBehaviour {
 
 	void FixedUpdate ()
     {
-        //if (!initialised)
-        //{
-        //    return;
-        //}
         //update time
         timeNow += Time.deltaTime;
 		//check time

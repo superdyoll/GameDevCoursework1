@@ -30,7 +30,7 @@ public class PointsSwitch : MonoBehaviour
             foreach (
                 Collider obsticles in
                 Physics.OverlapBox(track.gameObject.transform.position + Vector3.up * 5,
-                    new Vector3(track.gameObject.GetComponent<BoxCollider>().size.x / 2, 0f, 1f),
+                    new Vector3((track.gameObject.GetComponent<BoxCollider>().size.x / 2) * 0.8f, 0f, 1f),
                     track.gameObject.transform.rotation))
             {
                 if (obsticles.tag == "Train" || obsticles.tag == "Truck")

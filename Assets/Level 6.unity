@@ -483,7 +483,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4666613882101078, guid: 2ff9301d32c527849b8cec6a638f68b0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4666613882101078, guid: 2ff9301d32c527849b8cec6a638f68b0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -531,7 +531,7 @@ Prefab:
     - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
         type: 2}
       propertyPath: winByTruckX
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114082235706119922, guid: 2ff9301d32c527849b8cec6a638f68b0,
         type: 2}
