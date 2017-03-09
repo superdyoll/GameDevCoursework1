@@ -31,12 +31,22 @@ public class TrackGenerationScript : MonoBehaviour {
         new Vector3[] { new Vector3(40f, 0f, 30f), new Vector3(55f, 0f, 30f)}
     };
 
+    private Vector3[][] map3 =
+    {
+        new Vector3[] { new Vector3(-75f, 0f, -30f), new Vector3(-25f, 0f, -30f) } ,
+        new Vector3[] { new Vector3(-25f, 0f, -30f), new Vector3(0f, 0f, -30f), new Vector3(0f, 0f, -5f) } ,
+        new Vector3[] { new Vector3(25f, 0f, -30f), new Vector3(0f, 0f, -30f), new Vector3(0f, 0f, -5f) } ,
+        new Vector3[] { new Vector3(0f, 0f, -5f), new Vector3(20f, 0f, -5f), new Vector3(20f, 0f, 15f) } ,
+        new Vector3[] { new Vector3(25f, 0f, -30f), new Vector3(75f, 0f, -30f) }
+    };
+
     public List<Vector3[][]> maps = new List<Vector3[][]>();
 
 	void Start () {
         //place mapLayouts into maps var.
         maps.Add(map1);
         maps.Add(map2);
+        maps.Add(map3);
         //create an empty gameobject to hold all the track
         trackHolder = new GameObject("TrackHolder");
         //for each array in the array draw the track, if the array is 3 long then its a set of points, if 2 then its a straight
