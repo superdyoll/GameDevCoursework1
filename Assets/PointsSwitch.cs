@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PointsSwitch : MonoBehaviour
 {
-
     public GameObject[] TrackGameObjects;
     public TracksClass[] Tracks;
     public Material OffColor;
@@ -25,9 +24,24 @@ public class PointsSwitch : MonoBehaviour
 
     public void OnMouseDown()
     {
+        bool obstructed = false;
         foreach (TracksClass track in Tracks)
         {
-            Invert(track);
+            foreach (
+                Collider obsticles in
+                Physics.OverlapBox(track.gameObject.transform.position + Vector3.up * 5,
+                    new Vector3(track.gameObject.GetComponent<BoxCollider>().size.x / 2, 0f, 1f),
+                    track.gameObject.transform.rotation))
+            {
+                if (obsticles.tag == "Train" || obsticles.tag == "Truck")
+                {
+                    obstructed = true;
+                }
+            }
+            if (!obstructed)
+            {
+                Invert(track);
+            }
         }
     }
 
