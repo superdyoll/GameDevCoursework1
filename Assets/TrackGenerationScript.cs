@@ -24,35 +24,51 @@ public class TrackGenerationScript : MonoBehaviour {
         // TODO: Remake actual map
         new Vector3[] {new Vector3(-150f,0f, 50f), new Vector3(150f,0f,50f) }
     };
-    private Vector3[][] map4 = 
-    {
-        new Vector3[] { new Vector3(-150f, 0f, 50f), new Vector3(-100f, 0f, 50f) } ,
-        new Vector3[] { new Vector3(-100f, 0f, 50f), new Vector3(-90f, 0f, 50f), new Vector3(-90f, 0f, 60f) },
-        new Vector3[] { new Vector3(-90f, 0f, 50f), new Vector3(-40f, 0f, 50f)},
-        new Vector3[] { new Vector3(-30f, 0f, 50f), new Vector3(-40f, 0f, 50f), new Vector3(-40f, 0f, 40f) },
-        new Vector3[] { new Vector3(-90f, 0f, 40f), new Vector3(-40f, 0f, 40f)},
-        new Vector3[] { new Vector3(-30f, 0f, 50f), new Vector3(-20f, 0f, 50f)},
-        new Vector3[] { new Vector3(-20f, 0f, 50f), new Vector3(-10f, 0f, 50f), new Vector3(-10f, 0f, 40f) }
-    };
 
-    private Vector3[][] map5 =
+    private Vector3[][] map4 =
     {
         new Vector3[] { new Vector3(-199f, 0f, 0f), new Vector3(0f, 0f, 0f) },
         new Vector3[] { new Vector3(0f, 0f, 0f), new Vector3(15f, 0f, 0f), new Vector3(15f, 0f, 15f) },
         new Vector3[] { new Vector3(15f, 0f, 0f), new Vector3(200f, 0f, 0f) },
         new Vector3[] { new Vector3(15f,0f, 15f), new Vector3(25f, 0f, 15f) },
         new Vector3[] { new Vector3(25f, 0f, 15f), new Vector3(40f, 0f, 15f), new Vector3(40f, 0f, 30f) },
-        new Vector3[] { new Vector3(40f, 0f, 15f), new Vector3(55f, 0f, 15f)},
-        new Vector3[] { new Vector3(40f, 0f, 30f), new Vector3(55f, 0f, 30f)}
+        new Vector3[] { new Vector3(40f, 0f, 15f), new Vector3(60f, 0f, 15f)},
+        new Vector3[] { new Vector3(40f, 0f, 30f), new Vector3(60f, 0f, 30f)}
     };
 
-    private Vector3[][] map3 =
+    private Vector3[][] map5 =
     {
         new Vector3[] { new Vector3(-75f, 0f, -30f), new Vector3(-25f, 0f, -30f) } ,
-        new Vector3[] { new Vector3(-25f, 0f, -30f), new Vector3(0f, 0f, -30f), new Vector3(0f, 0f, -5f) } ,
-        new Vector3[] { new Vector3(25f, 0f, -30f), new Vector3(0f, 0f, -30f), new Vector3(0f, 0f, -5f) } ,
-        new Vector3[] { new Vector3(0f, 0f, -5f), new Vector3(20f, 0f, -5f), new Vector3(20f, 0f, 15f) } ,
+        new Vector3[] { new Vector3(-25f, 0f, -30f), new Vector3(0f, 0f, -30f), new Vector3(-10f, 0f, -15f) } ,
+        new Vector3[] { new Vector3(25f, 0f, -30f), new Vector3(0f, 0f, -30f), new Vector3(10f, 0f, -15f) } ,
+        new Vector3[] { new Vector3(-10f, 0f, -15f), new Vector3(10f, 0f, -15f), new Vector3(5f, 0f, 0f) } ,
+        new Vector3[] { new Vector3(5f, 0f, 0f), new Vector3(15f, 0f, 10f)},
         new Vector3[] { new Vector3(25f, 0f, -30f), new Vector3(75f, 0f, -30f) }
+    };
+
+    private Vector3[][] map6 =
+    {
+        new Vector3[] { new Vector3(-90f, 0f, 0f), new Vector3(-70f, 0f, 0f) } ,
+        new Vector3[] { new Vector3(-70f, 0f, 0f), new Vector3(-55f, 0f, 0f), new Vector3(-55f, 0f, -15f) } ,
+        new Vector3[] { new Vector3(-55f, 0f, 0f), new Vector3(-45f,0f,0f) } ,
+        new Vector3[] { new Vector3(-55f, 0f, -15f), new Vector3(-45f, 0f, -15f) } ,
+        new Vector3[] { new Vector3(-30f, 0f, 0f), new Vector3(-45f, 0f, 0f), new Vector3(-45f, 0f, -15f) } ,
+        new Vector3[] { new Vector3(-30f, 0f, 0f), new Vector3(-15f, 0f, 0f), new Vector3(-15f, 0f, 15f) } ,
+        new Vector3[] { new Vector3(-15f, 0f, 0f), new Vector3(-5f,0f, 0f) } ,
+        new Vector3[] { new Vector3(-15f, 0f, 15f), new Vector3(-5f,0f, 15f) } ,
+        new Vector3[] { new Vector3(10f,0f,0f), new Vector3(-5f, 0f, 0f), new Vector3(-5f, 0f, 15f) } ,
+        new Vector3[] { new Vector3(10f, 0f, 0f), new Vector3(90f, 0f, 0f)}
+    };
+
+    private Vector3[][] testMap =
+    {
+        new Vector3[] { new Vector3(-150f, 0f, 50f), new Vector3(-100f, 0f, 50f) } ,
+        new Vector3[] { new Vector3(-100f, 0f, 50f), new Vector3(-90f, 0f, 50f), new Vector3(-90f, 0f, 60f) },
+        new Vector3[] { new Vector3(-90f, 0f, 50f), new Vector3(-40f, 0f, 50f) },
+        new Vector3[] { new Vector3(-30f, 0f, 50f), new Vector3(-40f, 0f, 50f), new Vector3(-40f, 0f, 40f) },
+        new Vector3[] { new Vector3(-90f, 0f, 40f), new Vector3(-40f, 0f, 40f) },
+        new Vector3[] { new Vector3(-30f, 0f, 50f), new Vector3(-20f, 0f, 50f) },
+        new Vector3[] { new Vector3(-20f, 0f, 50f), new Vector3(-10f, 0f, 50f), new Vector3(-10f, 0f, 40f) }
     };
 
     public List<Vector3[][]> maps = new List<Vector3[][]>();
@@ -64,6 +80,7 @@ public class TrackGenerationScript : MonoBehaviour {
         maps.Add(map3);
         maps.Add(map4);
         maps.Add(map5);
+        maps.Add(map6);
         //create an empty gameobject to hold all the track
         trackHolder = new GameObject("TrackHolder");
         //for each array in the array draw the track, if the array is 3 long then its a set of points, if 2 then its a straight
@@ -116,7 +133,7 @@ public class TrackGenerationScript : MonoBehaviour {
         newButton.name = "Button";
         newButton.transform.localScale = new Vector3(10f, 0.001f, 10f);
         //slightly dodgy.
-        //TODO: change to get largest value from 1 and 2 which does no clode with track.
+        //TODO: change to get largest value from 1 and 2 which does no colide with track.
         newButton.transform.position = positions[0] + positions[2] - positions[1];
         newButton.layer = 9;
         newButton.GetComponent<Renderer>().material.color = Color.red;

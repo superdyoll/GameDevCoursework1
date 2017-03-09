@@ -22,7 +22,11 @@ public class WinDetection : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(allTrucks.Length);
+        initStuff();
+    }
+
+    public void initStuff()
+    {
         if (allTrucks.Length != 0 && sizeWin != 0 && winByTruckX != 0)
         {
             genWinTruckList();
@@ -191,6 +195,10 @@ public class WinDetection : MonoBehaviour
                     else if (i != (sizeWin - 1))
                     {
                         truck = truck.GetComponent<TruckMove>().GetTruckOnRight();
+                        if (truck == null)
+                        {
+                            return;
+                        }
                     }
                 }
             }

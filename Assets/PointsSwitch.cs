@@ -38,10 +38,11 @@ public class PointsSwitch : MonoBehaviour
                     obstructed = true;
                 }
             }
-            if (!obstructed)
-            {
-                Invert(track);
-            }
+        }
+        if (!obstructed)
+        {
+            Invert(Tracks[0]);
+            Invert(Tracks[1]);
         }
     }
 
