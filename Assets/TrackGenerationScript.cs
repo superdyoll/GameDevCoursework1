@@ -79,7 +79,7 @@ public class TrackGenerationScript : MonoBehaviour {
         if (positions[0].z != positions[1].z)
         {
             Vector3 lineDirection = positions[1] - positions[0];
-            float sign = (Math.Abs(positions[1].z)) < (Math.Abs(positions[0].z)) ? 1.0f : -1.0f;
+            float sign = positions[1].z < positions[0].z ? 1.0f : -1.0f;
             float angle = Vector3.Angle(lineDirection.normalized, Vector3.right) * sign;
             newTrack.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
         }
