@@ -11,7 +11,20 @@ public class TrackGenerationScript : MonoBehaviour {
     public Material OffColorMaterial;
 
     //jagged 2d array of all pieces of track and points
-    private Vector3[][] map1 = 
+    private Vector3[][] map1 =
+    {
+        new Vector3[] {new Vector3(-200f,0f, 0f), new Vector3(200f,0f,0f) } 
+    };
+    private Vector3[][] map2 =
+    {
+        new Vector3[] {new Vector3(-200f,0f, 0f), new Vector3(200f,0f,0f) }
+    };
+    private Vector3[][] map3 =
+    {
+        // TODO: Remake actual map
+        new Vector3[] {new Vector3(-150f,0f, 50f), new Vector3(150f,0f,50f) }
+    };
+    private Vector3[][] map4 = 
     {
         new Vector3[] { new Vector3(-150f, 0f, 50f), new Vector3(-100f, 0f, 50f) } ,
         new Vector3[] { new Vector3(-100f, 0f, 50f), new Vector3(-90f, 0f, 50f), new Vector3(-90f, 0f, 60f) },
@@ -22,7 +35,7 @@ public class TrackGenerationScript : MonoBehaviour {
         new Vector3[] { new Vector3(-20f, 0f, 50f), new Vector3(-10f, 0f, 50f), new Vector3(-10f, 0f, 40f) }
     };
 
-    private Vector3[][] map2 =
+    private Vector3[][] map5 =
     {
         new Vector3[] { new Vector3(-199f, 0f, 0f), new Vector3(0f, 0f, 0f) },
         new Vector3[] { new Vector3(0f, 0f, 0f), new Vector3(15f, 0f, 0f), new Vector3(15f, 0f, 15f) },
@@ -39,6 +52,9 @@ public class TrackGenerationScript : MonoBehaviour {
         //place mapLayouts into maps var.
         maps.Add(map1);
         maps.Add(map2);
+        maps.Add(map3);
+        maps.Add(map4);
+        maps.Add(map5);
         //create an empty gameobject to hold all the track
         trackHolder = new GameObject("TrackHolder");
         //for each array in the array draw the track, if the array is 3 long then its a set of points, if 2 then its a straight
