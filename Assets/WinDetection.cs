@@ -193,7 +193,7 @@ public class WinDetection : MonoBehaviour
                 {
                     if (truck == null)
                     {
-                        Debug.Log("No truck(1)");
+                        Debug.Log("No truck(" + i + ")");
                         return;
                     }
                     if (winTruckList[i].GetComponent<Renderer>().material != truck.GetComponent<Renderer>().material)
