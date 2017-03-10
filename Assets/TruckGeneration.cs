@@ -15,13 +15,15 @@ public class TruckGeneration : MonoBehaviour {
     private int listIndex = 0;
     private float timeNow = 0f; 
     private float timeNext = 0f;
+    private WinDetection winDetectScript;
 
     public void Start()
     {
         genTrucksToSpawn();
         GameObject goal = GameObject.Find("Goal");
-        goal.GetComponent<WinDetection>().allTrucks = nextTrucks.ToArray();
-        goal.GetComponent<WinDetection>().initStuff();
+        winDetectScript = goal.GetComponent<WinDetection>();
+        winDetectScript.allTrucks = nextTrucks.ToArray();
+        winDetectScript.initStuff();
     }
 
     private void genTrucksToSpawn()
@@ -44,7 +46,7 @@ public class TruckGeneration : MonoBehaviour {
 		//check time
         if (timeNext < timeNow)
         {
-            if (Physics.OverlapBox(spawnLoc, new Vector3(5f,0f, 5f)).Length == 0 && listIndex < 20)
+            if (Physics.OverlapBox(spawnLoc, new Vector3(5f,0f, 5f)).Length == 0 && listIndex < winDetectScript.winByTruckX)
             {
                 //create a new object with random colour
                 nextTrucks[listIndex].SetActive(true);
