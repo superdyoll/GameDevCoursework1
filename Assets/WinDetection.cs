@@ -203,6 +203,7 @@ public class WinDetection : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("Truck " + i);
                         truck = truck.GetComponent<TruckMove>().GetTruckOnRight();
                     }
                 }
