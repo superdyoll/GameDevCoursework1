@@ -6,8 +6,6 @@ using UnityEngine;
 public class TruckMove : MonoBehaviour, ICube
 {
     public GameObject truck;
-    private Rigidbody rb;
-
 
     public float smooth = 3;
     public int layerMask = (1 << 8);
@@ -20,7 +18,6 @@ public class TruckMove : MonoBehaviour, ICube
     // Use this for initialization
     void Start()
     {
-        rb = truck.GetComponent<Rigidbody>();
         linked = new GameObject[2];
         RemoveAllConnections();
     }
@@ -128,13 +125,13 @@ public class TruckMove : MonoBehaviour, ICube
 
     public bool AddConnectionLeft(GameObject leftLink)
     {
-        print("Adding truck connection on left");
+        //print("Adding truck connection on left");
         return AddConnection(leftLink, 0);
     }
 
     public bool AddConnectionRight(GameObject rightLink)
     {
-        print("Adding truck connection on right");
+        //print("Adding truck connection on right");
         return AddConnection(rightLink, 1);
     }
 

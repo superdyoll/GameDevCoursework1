@@ -19,3 +19,7 @@ EditorBuildSettings:
     path: Assets/Level 3.unity
   - enabled: 1
     path: Assets/Level 4.unity
+  - enabled: 1
+    path: Assets/Level 5.unity
+  - enabled: 1
+    path: Assets/Level 6.unity

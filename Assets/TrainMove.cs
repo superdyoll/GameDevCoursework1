@@ -100,7 +100,6 @@ public class TrainMove : MonoBehaviour, ICube
                 float yComponent = newRotation.eulerAngles.y;
                 if (Mathf.Abs(yComponent - transform.rotation.eulerAngles.y) >= 180)
                 {
-                    float temp = yComponent - 180;
                     yComponent = yComponent - 180;
                 }
                 //this if statement may be unecessary

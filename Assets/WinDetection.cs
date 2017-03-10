@@ -42,7 +42,7 @@ public class WinDetection : MonoBehaviour
             gameObject.transform.position = gameObject.transform.position + new Vector3(-10f, 0f, 0f);
         }
     }
-
+ 
     private void genTruckPlanes()
     {
         int half = winTruckList.Count / 2;
@@ -160,7 +160,7 @@ public class WinDetection : MonoBehaviour
         panel.AddComponent<CanvasRenderer>();
         panel.AddComponent<Image>();
         panel.AddComponent<HorizontalLayoutGroup>();
-        panel.transform.parent = canvas.transform;
+        panel.transform.SetParent(canvas.transform);
 
         for (int i = 0; i < winTruckList.Count; i++)
         {
@@ -169,7 +169,7 @@ public class WinDetection : MonoBehaviour
             newImageObj.AddComponent<CanvasRenderer>();
             Image newImageComp = newImageObj.AddComponent<Image>();
             newImageComp.color = winTruckList[i].GetComponent<Renderer>().material.color;
-            newImageObj.transform.parent = panel.transform;
+            newImageObj.transform.SetParent(panel.transform);
             newImageObj.SetActive(true);
         }
         myRect.anchoredPosition = new Vector3(0, 0, 0);
@@ -184,7 +184,7 @@ public class WinDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Train")
         {
-
+            Debug.Log("TRAIN!!");
             if (!justTrain)
             {
                 GameObject truck = other.GetComponent<TrainMove>().GetTruckOnRight();
@@ -193,19 +193,17 @@ public class WinDetection : MonoBehaviour
                 {
                     if (truck == null)
                     {
+                        Debug.Log("No truck(1)");
                         return;
                     }
                     if (winTruckList[i].GetComponent<Renderer>().material != truck.GetComponent<Renderer>().material)
                     {
+                        Debug.Log("Wrong coloured truck");
                         return;
                     }
-                    else if (i != (sizeWin - 1))
+                    else
                     {
                         truck = truck.GetComponent<TruckMove>().GetTruckOnRight();
-                        if (truck == null)
-                        {
-                            return;
-                        }
                     }
                 }
             }
