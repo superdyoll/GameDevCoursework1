@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainMove : MonoBehaviour, ICube
+public class TrainMove : MonoBehaviour
 {
 
     public GameObject train;
@@ -13,6 +13,7 @@ public class TrainMove : MonoBehaviour, ICube
     public int layerMask = (1 << 8);
     private float direction;
 
+    //array of trucks linked directly to the front or back of the train.
     public GameObject[] linked;
 
     // Use this for initialization
@@ -26,6 +27,7 @@ public class TrainMove : MonoBehaviour, ICube
 
     void Update()
     {
+        //press space to decouple all trucks from yourself and eachother
         if (Input.GetKeyDown(KeyCode.Space))
         {
             print("SPAAAAACCEE");
@@ -40,6 +42,9 @@ public class TrainMove : MonoBehaviour, ICube
                     }
                 }
             }
+            linked[0] = null;
+            linked[1] = null;
+
         }
     }
 
@@ -47,8 +52,7 @@ public class TrainMove : MonoBehaviour, ICube
     {
         // Move left/right with <- and -> or 'a' and 'd'
         direction = Input.GetAxis("Horizontal");
-
-        //Debug.Log(direction);
+        
         if (direction != 0)
         {
             // Movement
@@ -64,6 +68,7 @@ public class TrainMove : MonoBehaviour, ICube
                     Vector3 angle = rayPosition - transform.position;
                     angle.Normalize();
 
+                    //if we hit a truck then couple it
                     Ray rayTruck = new Ray(rayPosition, angle);
                     if (Physics.Raycast(rayTruck, out hitInfoTruck, 7f))
                     {

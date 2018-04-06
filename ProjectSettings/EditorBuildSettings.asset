@@ -7,21 +7,34 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Menu.unity
+    guid: 57658b91734ecc54eac5ca748d806d34
   - enabled: 1
     path: Assets/Level 1.unity
+    guid: ad066f4997466864b8c5446888b3c0e5
   - enabled: 0
     path: Assets/TrainYard.unity
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Trainyard2.unity
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Complex Train Yard.unity
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Level 2.unity
+    guid: cea7b507cee58a24e85d4d9174e32234
   - enabled: 1
     path: Assets/Level 3.unity
+    guid: c00972be53e1e514ea5ef7a3d1aee253
   - enabled: 1
     path: Assets/Level 4.unity
+    guid: d6417d33b254fba4885961a29d7ba48e
   - enabled: 1
     path: Assets/Level 5.unity
+    guid: 63b580c6452073d43b58d1167219dd3e
   - enabled: 1
     path: Assets/Level 6.unity
+    guid: 60bd4cddd249fda48ba257614733b0b0
+  - enabled: 1
+    path: Assets/End.unity
+    guid: 26fa38ee29e54df44b98391af1070a1a

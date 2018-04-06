@@ -12,19 +12,15 @@ public class GameManager : MonoBehaviour {
     private Text levelText;
     private GameObject levelImage;
     private bool doingSetup;
-    
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-
+    //entry point to code - once level is loaded do initalisation stuff.
     private void OnLevelWasLoaded(int level)
     {
         print("Level loaded");
         InitGame();
     }
 
+    //level initalisation
     private void InitGame()
     {
         doingSetup = true;
@@ -37,11 +33,7 @@ public class GameManager : MonoBehaviour {
         print("Invoked");
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
-
+    //method to hide level entry screen
     private void HideLevelImage()
     {
         print("Hiding");
@@ -49,6 +41,7 @@ public class GameManager : MonoBehaviour {
         doingSetup = false;
     }
 
+    //public accessor method 
     public bool GetDoingSetup()
     {
         return doingSetup;

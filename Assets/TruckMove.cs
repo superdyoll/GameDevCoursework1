@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TruckMove : MonoBehaviour, ICube
+public class TruckMove : MonoBehaviour
 {
     public GameObject truck;
 
     public float smooth = 3;
     public int layerMask = (1 << 8);
 
-    private float direction;
+    private float direction = 0;
 
     private GameObject[] linked;
     private TrainMove train;
@@ -24,6 +24,7 @@ public class TruckMove : MonoBehaviour, ICube
 
     private void FixedUpdate()
     {
+        //movement
         //vert is w/s
         //horiz is a/d
         if (linked[0] != null || linked[1] != null)
@@ -42,12 +43,22 @@ public class TruckMove : MonoBehaviour, ICube
                         Vector3 angle = rayPosition - transform.position;
                         angle.Normalize();
 
+                        //creating new coupling if collide
                         Ray rayTruck = new Ray(rayPosition, angle);
                         if (Physics.Raycast(rayTruck, out hitInfoTruck, 7f))
                         {
                             if (hitInfoTruck.collider.gameObject.tag == "Truck")
                             {
-                                TruckMove truckmove = hitInfoTruck.collider.gameObject.GetComponent<TruckMove>();
+                                GameObject newTruck = hitInfoTruck.collider.gameObject;
+                                TruckMove truckmove = newTruck.GetComponent<TruckMove>();
+                                if (direction < 0)
+                                {
+                                    linked[0] = newTruck;
+                                }
+                                else
+                                {
+                                    linked[1] = newTruck;
+                                }
                                 truckmove.AddConnection(truck, direction);
                             }
                         }
@@ -112,6 +123,7 @@ public class TruckMove : MonoBehaviour, ICube
 
     private bool AddTrain(GameObject link)
     {
+        print(link);
         if (link.tag == "Train")
         {
             train = link.GetComponent<TrainMove>();
@@ -165,7 +177,11 @@ public class TruckMove : MonoBehaviour, ICube
 
     public void RemoveAllConnections(GameObject caller)
     {
-        for(int i = 0; i <=1; i ++)
+
+        print("name: " + truck.name);
+        if (linked[0] != null) { print(linked[0].name); } else { print("Null"); }
+        if (linked[1] != null) { print(linked[1].name); } else { print("Null"); }
+        for (int i = 0; i <=1; i ++)
         {
             if (linked[i] != null)
             {
@@ -173,11 +189,9 @@ public class TruckMove : MonoBehaviour, ICube
                 linked[i] = null;
                 if (localTruck == caller)
                 {
-                    print("Same Train");
                 }
                 if (localTruck != null && localTruck != caller && localTruck != truck && localTruck != train)
                 {
-                    //print("Other truck");
                     localTruck.RemoveAllConnections(truck);
                 }
             }

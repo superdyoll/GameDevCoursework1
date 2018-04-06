@@ -196,9 +196,12 @@ public class WinDetection : MonoBehaviour
                         Debug.Log("No truck(" + i + ")");
                         return;
                     }
-                    if (winTruckList[i].GetComponent<Renderer>().material != truck.GetComponent<Renderer>().material)
+                    if (winTruckList[i].GetComponent<Renderer>().material.name != truck.GetComponent<Renderer>().material.name)
                     {
                         Debug.Log("Wrong coloured truck");
+                        Debug.Log("Expected: " + winTruckList[i].GetComponent<Renderer>().material.name);
+                        Debug.Log("Got: " + truck.GetComponent<Renderer>().material.name);
+
                         return;
                     }
                     else

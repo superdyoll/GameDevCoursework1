@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//class for attaching to a set of points, which will switch them when a button is pressed.
 public class PointsSwitch : MonoBehaviour
 {
     public GameObject[] TrackGameObjects;
@@ -24,6 +25,7 @@ public class PointsSwitch : MonoBehaviour
 
     public void OnMouseDown()
     {
+        //check if anything is over the points - obstructing them
         bool obstructed = false;
         foreach (TracksClass track in Tracks)
         {
@@ -39,6 +41,7 @@ public class PointsSwitch : MonoBehaviour
                 }
             }
         }
+        //if the points are not obstructed the remove active tracks and active deactivate tracks
         if (!obstructed)
         {
             Invert(Tracks[0]);
@@ -46,6 +49,7 @@ public class PointsSwitch : MonoBehaviour
         }
     }
 
+    //method which deactives a piece of track if it is active or activaties it if it is not active.
     private void Invert(TracksClass track)
     {
         if (track.enabled)
@@ -58,6 +62,7 @@ public class PointsSwitch : MonoBehaviour
         }
     }
 
+    //to activate a piece of track, add it to the track layer (8), and make it the right colour and size.
     private void Activate(TracksClass track)
     {
         track.gameObject.GetComponent<Renderer>().material = OnColor;
@@ -67,6 +72,8 @@ public class PointsSwitch : MonoBehaviour
         track.enabled = true;
     }
 
+
+    //to deactivate a piece of track, remove it from the track layer (8), and make it the right colour and size.
     private void Deactivate(TracksClass track)
     {
         track.gameObject.GetComponent<Renderer>().material = OffColor;
@@ -76,6 +83,7 @@ public class PointsSwitch : MonoBehaviour
         track.enabled = false;
     }
 
+    //a local class representing a piece of track.
     public class TracksClass
     {
         public GameObject gameObject { get; private set; }
