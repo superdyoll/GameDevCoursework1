@@ -1,0 +1,37 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon R9 200 / HD 7900 Series (ID=0x6798)
+    Vendor:   ATI
+    VRAM:     3052 MB
+    Driver:   1.8.0.0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.037 seconds
+Platform assembly: C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Edmund\Desktop\3rdYearGit\Comp3218\GameDevCoursework1\FreightYard_Data\Managed\System.dll (this message is harmless)
+OnLevelWasLoaded was found on GameManager
+This message has been deprecated and will be removed in a later version of Unity.
+Add a delegate to SceneManager.sceneLoaded instead to get notifications after scene loading has completed
+ 
+(Filename:  Line: 382)
+
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.809856 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1218 -> priority: 1 
