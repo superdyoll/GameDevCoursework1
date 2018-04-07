@@ -85,32 +85,6 @@ public class WinDetection : MonoBehaviour
             }
         }
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-
-
-
-
-        //if (mod == 0)
-        //{
-        //    offsetLoc = 7.5f;
-
-        //}
-        //else
-        //{
-        //    GameObject newTruckPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        //    newTruckPlane.name = "ASDFGHJKL";
-        //    newTruckPlane.GetComponent<Renderer>().material = winTruckList[(int)half].GetComponent<Renderer>().material;
-        //}
-
-        //for (int i = 1; i < half; i++)
-        //{
-        //    for (int j = -1; j < 2; j = j + 2)
-        //    {
-        //        GameObject newTruckPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        //        newTruckPlane.name = "ASDFGHJKL";
-        //        newTruckPlane.GetComponent<Renderer>().material = winTruckList[(int) half + (j * i)].GetComponent<Renderer>().material;
-        //        newTruckPlane.transform.position = new Vector3((j * (gapBetweenBoxes.x * i + offsetLoc)) + centre.x, centre.y, centre.z);
-        //    }
-        //}
     }
 
     private void genWinTruckList()
@@ -184,7 +158,6 @@ public class WinDetection : MonoBehaviour
     {
         if (other.gameObject.tag == "Train")
         {
-            Debug.Log("TRAIN!!");
             if (!justTrain)
             {
                 GameObject truck = other.GetComponent<TrainMove>().GetTruckOnRight();
@@ -206,12 +179,10 @@ public class WinDetection : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Truck " + i);
                         truck = truck.GetComponent<TruckMove>().GetTruckOnRight();
                     }
                 }
             }
-
             print("loading scene " + levelToLoad);
             SceneManager.LoadScene(levelToLoad);
         }

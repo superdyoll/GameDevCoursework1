@@ -30,7 +30,6 @@ public class TrainMove : MonoBehaviour
         //press space to decouple all trucks from yourself and eachother
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            print("SPAAAAACCEE");
             foreach (GameObject link in linked)
             {
                 if (link != null)
